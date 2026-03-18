@@ -104,7 +104,7 @@ config timeserver 'ntp'
 # LED
 {% if openwrt_system_led is defined %}
 {% for system_led in openwrt_system_led %}
-config led "{{ system_led.itemname }}"
+config led
 	option name "{{ system_led.name }}"
 {% if system_led.sysfs is defined %}
 	option sysfs "{{ system_led.sysfs }}"
@@ -117,11 +117,13 @@ config led "{{ system_led.itemname }}"
 	list port "{{ system_port }}"
 {% endfor %}
 {% endif %}
-{% if system_led.mode is defined %}
-	option mode "{{ system_led.mode }}"
-{% endif %}
 {% if system_led.dev is defined %}
 	option dev "{{ system_led.dev }}"
+{% endif %}
+{% if system_led.mode is defined %}
+{% for mode in system_led.mode %}
+	list mode "{{ mode }}"
+{% endfor %}
 {% endif %}
 {% endfor %}
 {% endif %}
