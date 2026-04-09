@@ -125,5 +125,13 @@ config led
 	list mode "{{ mode }}"
 {% endfor %}
 {% endif %}
+{% if system_led.port is defined %}
+{% for port in system_led.port %}
+	list port "{{ port }}"
+{% endfor %}
+{% endif %}
+{% if system_led.interval is defined %}
+	option interval "{{ system_led.interval }}"
+{% endif %}
 {% endfor %}
 {% endif %}
