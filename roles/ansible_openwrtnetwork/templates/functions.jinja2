@@ -82,6 +82,7 @@ config route6
 config wireguard_{{ value["interface"] }}
 	option description '{{ key }}'
 	option public_key '{{ value["public_key"] }}'
+	option private_key '{{ value["private_key"] }}'
 {% if value["preshared_key"] is defined %}
 	option preshared_key '{{ value["preshared_key"] }}'
 {% endif %}
